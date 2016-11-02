@@ -17,9 +17,7 @@ public class UnionFind {
         }
     }
 
-    protected int root(int i) {//TODO how can we test root() if we require union() func to work properly for it, and reverse?[ASK]
-        //TODO why root() should be private func? And how we can test it then? And should we do it at all?
-        //TODO I made it protected, ok? [ASK]
+    private int root(int i) {
         while (i != id[i])
             i = id[i];
         return i;
@@ -30,20 +28,20 @@ public class UnionFind {
     }
 
     public int find(int i) {
-        return  max[root(i)];
+        return max[root(i)];
     }
 
     public void union(int p, int q) {
         int i = root(p);
         int j = root(q);
 
-        if(i == j) return;
-        if(sz[i] < sz[j]) weightingAndMaxFinding(i, j);
+        if (i == j) return;
+        if (sz[i] < sz[j]) weightingAndMaxFinding(i, j);
         else weightingAndMaxFinding(j, i);
     }
 
     private void weightingAndMaxFinding(int firstNum, int secondNum) {
-        if(max[firstNum] > max[secondNum])
+        if (max[firstNum] > max[secondNum])
             max[secondNum] = max[firstNum];
 
         id[firstNum] = secondNum;

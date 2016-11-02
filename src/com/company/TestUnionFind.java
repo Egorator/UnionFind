@@ -8,9 +8,6 @@ public class TestUnionFind {
 
     @Test
     public void testConnectedFunc() {
-        //TODO how can we test connected() if we require union() func to work properly for it, and how can we test
-        //TODO union() func without checking it by connected() func? We need to assume that one of them at least
-        //TODO works properly! [ASK]
         UnionFind unionFind = new UnionFind(2);
         unionFind.union(0, 1);
         assertTrue(unionFind.connected(1, 0));
