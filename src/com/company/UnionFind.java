@@ -53,8 +53,8 @@ public class UnionFind {
 
         callback(firstRoot, secondRoot);
 
-        int sizeOfFirst = componentSize[first];
-        int sizeOfSecond = componentSize[second];
+        int sizeOfFirst = componentSize[firstRoot];//[first]
+        int sizeOfSecond = componentSize[secondRoot];//[second]
         connect(firstRoot, secondRoot);
         int newRoot = getRoot(first);
         assert newRoot == getRoot(second);

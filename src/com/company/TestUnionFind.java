@@ -64,4 +64,135 @@ public class TestUnionFind {
         assertEquals(9, unionFind.find(0));
         assertTrue(unionFind.connected(5, 3));
     }
+
+    @Test
+    public void totalSuperTest() {
+        UnionFind unionFind = new UnionFind(5);
+        assertTrue(unionFind.connected(0, 0));
+        assertFalse(unionFind.connected(0, 1));
+        assertFalse(unionFind.connected(0, 2));
+        assertFalse(unionFind.connected(0, 3));
+        assertFalse(unionFind.connected(0, 4));
+        assertTrue(unionFind.connected(1, 1));
+        assertFalse(unionFind.connected(1, 2));
+        assertFalse(unionFind.connected(1, 3));
+        assertFalse(unionFind.connected(1, 4));
+        assertTrue(unionFind.connected(2, 2));
+        assertFalse(unionFind.connected(2, 3));
+        assertFalse(unionFind.connected(2, 4));
+        assertTrue(unionFind.connected(3, 3));
+        assertFalse(unionFind.connected(3, 4));
+        assertTrue(unionFind.connected(4, 4));
+
+        assertEquals(0, unionFind.find(0));
+        assertEquals(1, unionFind.find(1));
+        assertEquals(2, unionFind.find(2));
+        assertEquals(3, unionFind.find(3));
+        assertEquals(4, unionFind.find(4));
+
+        //
+
+        unionFind.union(0, 1);
+
+        assertTrue(unionFind.connected(0, 0));
+        assertTrue(unionFind.connected(0, 1));
+        assertFalse(unionFind.connected(0, 2));
+        assertFalse(unionFind.connected(0, 3));
+        assertFalse(unionFind.connected(0, 4));
+        assertTrue(unionFind.connected(1, 1));
+        assertFalse(unionFind.connected(1, 2));
+        assertFalse(unionFind.connected(1, 3));
+        assertFalse(unionFind.connected(1, 4));
+        assertTrue(unionFind.connected(2, 2));
+        assertFalse(unionFind.connected(2, 3));
+        assertFalse(unionFind.connected(2, 4));
+        assertTrue(unionFind.connected(3, 3));
+        assertFalse(unionFind.connected(3, 4));
+        assertTrue(unionFind.connected(4, 4));
+
+        assertEquals(1, unionFind.find(0));
+        assertEquals(1, unionFind.find(1));
+        assertEquals(2, unionFind.find(2));
+        assertEquals(3, unionFind.find(3));
+        assertEquals(4, unionFind.find(4));
+
+        //
+
+        unionFind.union(1, 2);
+
+        assertTrue(unionFind.connected(0, 0));
+        assertTrue(unionFind.connected(0, 1));
+        assertTrue(unionFind.connected(0, 2));
+        assertFalse(unionFind.connected(0, 3));
+        assertFalse(unionFind.connected(0, 4));
+        assertTrue(unionFind.connected(1, 1));
+        assertTrue(unionFind.connected(1, 2));
+        assertFalse(unionFind.connected(1, 3));
+        assertFalse(unionFind.connected(1, 4));
+        assertTrue(unionFind.connected(2, 2));
+        assertFalse(unionFind.connected(2, 3));
+        assertFalse(unionFind.connected(2, 4));
+        assertTrue(unionFind.connected(3, 3));
+        assertFalse(unionFind.connected(3, 4));
+        assertTrue(unionFind.connected(4, 4));
+
+        assertEquals(2, unionFind.find(0));
+        assertEquals(2, unionFind.find(1));
+        assertEquals(2, unionFind.find(2));
+        assertEquals(3, unionFind.find(3));
+        assertEquals(4, unionFind.find(4));
+
+        //
+
+        unionFind.union(4, 3);
+
+        assertTrue(unionFind.connected(0, 0));
+        assertTrue(unionFind.connected(0, 1));
+        assertTrue(unionFind.connected(0, 2));
+        assertFalse(unionFind.connected(0, 3));
+        assertFalse(unionFind.connected(0, 4));
+        assertTrue(unionFind.connected(1, 1));
+        assertTrue(unionFind.connected(1, 2));
+        assertFalse(unionFind.connected(1, 3));
+        assertFalse(unionFind.connected(1, 4));
+        assertTrue(unionFind.connected(2, 2));
+        assertFalse(unionFind.connected(2, 3));
+        assertFalse(unionFind.connected(2, 4));
+        assertTrue(unionFind.connected(3, 3));
+        assertTrue(unionFind.connected(3, 4));
+        assertTrue(unionFind.connected(4, 4));
+
+        assertEquals(2, unionFind.find(0));
+        assertEquals(2, unionFind.find(1));
+        assertEquals(2, unionFind.find(2));
+        assertEquals(4, unionFind.find(3));
+        assertEquals(4, unionFind.find(4));
+
+        //
+
+        unionFind.union(4, 0);
+
+        assertTrue(unionFind.connected(0, 0));
+        assertTrue(unionFind.connected(0, 1));
+        assertTrue(unionFind.connected(0, 2));
+        assertTrue(unionFind.connected(0, 3));
+        assertTrue(unionFind.connected(0, 4));
+        assertTrue(unionFind.connected(1, 1));
+        assertTrue(unionFind.connected(1, 2));
+        assertTrue(unionFind.connected(1, 3));
+        assertTrue(unionFind.connected(1, 4));
+        assertTrue(unionFind.connected(2, 2));
+        assertTrue(unionFind.connected(2, 3));
+        assertTrue(unionFind.connected(2, 4));
+        assertTrue(unionFind.connected(3, 3));
+        assertTrue(unionFind.connected(3, 4));
+        assertTrue(unionFind.connected(4, 4));
+
+        assertEquals(4, unionFind.find(0));
+        assertEquals(4, unionFind.find(1));
+        assertEquals(4, unionFind.find(2));
+        assertEquals(4, unionFind.find(3));
+        assertEquals(4, unionFind.find(4));
+    }
+
 }
