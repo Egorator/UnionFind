@@ -25,15 +25,43 @@ public class TestUnionFind {
     }
 
     @Test
-    public void testWeighting() {
-        //tests both "connected component #1 is bigger then #2" and "connected component #2 is bigger then #1"
-        UnionFind unionFind = new UnionFind(6);
-        unionFind.union(0, 1);
-        unionFind.union(2, 3);//2 is root
-        unionFind.union(3, 4);
-        unionFind.union(0, 4);//connected component with 0 is smaller then one with 4
-        assertEquals(2, unionFind.root(0));
-        unionFind.union(5, 4);
-        assertEquals(2, unionFind.root(5));
+    public void noSenseBigFuckingTest() {
+        UnionFind unionFind = new UnionFind(10);
+
+        unionFind.union(4, 3);
+        assertEquals(4, unionFind.find(3));
+        assertTrue(unionFind.connected(3, 4));
+
+        unionFind.union(3, 8);
+        assertEquals(8, unionFind.find(3));
+        assertTrue(unionFind.connected(3, 8));
+
+        unionFind.union(6, 5);
+        assertEquals(6, unionFind.find(6));
+        assertTrue(unionFind.connected(6, 5));
+
+        unionFind.union(9, 4);
+        assertEquals(9, unionFind.find(4));
+        assertTrue(unionFind.connected(8, 9));
+
+        unionFind.union(2, 1);
+        assertEquals(2, unionFind.find(2));
+        assertTrue(unionFind.connected(1, 2));
+
+        unionFind.union(5, 0);
+        assertEquals(6, unionFind.find(5));
+        assertTrue(unionFind.connected(0, 5));
+
+        unionFind.union(7, 2);
+        assertEquals(7, unionFind.find(1));
+        assertTrue(unionFind.connected(1, 7));
+
+        unionFind.union(6, 1);
+        assertEquals(7, unionFind.find(1));
+        assertTrue(unionFind.connected(5, 1));
+
+        unionFind.union(7, 3);
+        assertEquals(9, unionFind.find(0));
+        assertTrue(unionFind.connected(5, 3));
     }
 }
